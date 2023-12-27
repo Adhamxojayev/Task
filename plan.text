@@ -1,0 +1,25 @@
+
+auth(access_token, refresh_token)
+
+Entities:
+
+1. groups: 			id, group_name, 						(one_to_many, student), (many_to_many, objects)				C,R,U,D 
+2. students;   	id, student_name,   				(one_to_many, assessments), 													C,R,U,D
+3. objects;    	id, object_name,   					(one_to_many, assessments)														C,R,U,D
+4. assessments;	id, assessment_name, grade, 																											C,R,U,D
+5. users (student teacher and director); username, password																				C,R,U,D
+6. permission 																																										C,R,U,D
+
+
+/stdents/report
+name=?
+group=?
+subject=?
+average-grade=?
+
+
+/groups/:groupId
+group=?
+subject=?
+average-grade=?
+
