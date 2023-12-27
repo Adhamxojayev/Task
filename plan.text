@@ -10,13 +10,11 @@ Entities:
 5. users (student teacher and director); username, password																				C,R,U,D
 6. permission 																																										C,R,U,D
 
-
 /stdents/report
 name=?
 group=?
 subject=?
 average-grade=?
-
 
 /groups/:groupId
 group=?
