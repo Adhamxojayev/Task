@@ -5,7 +5,7 @@ import { JwtSignOptions } from '@nestjs/jwt';
 import { USER_ROLE } from '@utils/enums';
 
 export const jwtHelper = {
-    sign(data: { username: string; role: USER_ROLE }, options?: JwtSignOptions) {
+    sign(data: { id: number; username: string; role: USER_ROLE }, options?: JwtSignOptions) {
 
         return jwt.sign(data, process.env['JWT_KEY'], options);
     

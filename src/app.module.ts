@@ -9,12 +9,22 @@ import { configuration } from '@utils/db.config';
 import { AuthModule } from './modules/auth/auth.module';
 import { RolesGuard } from './modules/auth/guard/roles.guard';
 import { AuthGuard } from './modules/auth/guard/auth.guard';
+import { GroupModule } from './modules/group/group.module';
+import { StudentModule } from './modules/student/student.module';
+import { AssessmentModule } from './modules/assessment/assessment.module';
+import { ObjectModule } from './modules/object/object.module';
+import { TeacherModule } from './modules/teacher/teacher.module';
 
 @Module({
     imports: [
         TypeOrmModule.forRoot(configuration.getTypeOrmConfig()),
         // SeedModule,
-        AuthModule
+        AuthModule,
+        GroupModule,
+        StudentModule,
+        TeacherModule,
+        ObjectModule,
+        AssessmentModule
     ],
     controllers: [],
     providers: [

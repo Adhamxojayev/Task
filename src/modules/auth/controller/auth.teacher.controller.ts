@@ -13,7 +13,9 @@ import { Public } from '@dec/public.route.decorator';
 import { AuthTeacherService } from '../service/auth.teacher.service';
 import { Roles } from '@dec/roles.decorator';
 import { USER_ROLE } from '@utils/enums';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('teacher')
 @Controller('teacher')
 export class AuthTeacherController {
 

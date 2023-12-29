@@ -13,7 +13,9 @@ import { USER_ROLE } from '@utils/enums';
 import { Response } from 'express';
 import { LoginDto } from '../dto/login.dto';
 import { AuthDirectorService } from '../service/auth.director.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('director')
 @Controller('director')
 export class AuthDirectortroller {
 

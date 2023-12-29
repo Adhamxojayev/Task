@@ -61,6 +61,7 @@ export class AuthDirectorService {
 
             const ACCESS_TOKEN = jwtHelper.sign(
                 {
+                    id: director.id,
                     username: director.username,
                     role: USER_ROLE.DIRECTOR
                 },
@@ -71,6 +72,7 @@ export class AuthDirectorService {
 
             const REFRESH_TOKEN = jwtHelper.sign(
                 {
+                    id: director.id,
                     username: director.username,
                     role: USER_ROLE.DIRECTOR
                 },
@@ -108,10 +110,10 @@ export class AuthDirectorService {
             
             }
 
-            const centre = await this.userRepository.getUserByName(
+            const director = await this.userRepository.getUserByName(
                 decodedToken.username
             );
-            if (!centre) {
+            if (!director) {
 
                 return {
                     status: HttpStatus.UNAUTHORIZED,
@@ -122,7 +124,7 @@ export class AuthDirectorService {
             }
 
             const ACCESS_TOKEN = jwtHelper.sign(
-                { username: centre.username, role: USER_ROLE.DIRECTOR },
+                { id: director.id, username: director.username, role: USER_ROLE.DIRECTOR },
                 { expiresIn: '1d' }
             );
 

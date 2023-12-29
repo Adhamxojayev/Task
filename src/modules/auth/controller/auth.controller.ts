@@ -14,7 +14,9 @@ import { SignUpDto } from '../dto/register.dto';
 import { USER_ROLE } from '@utils/enums';
 import { Roles } from '@dec/roles.decorator';
 import { Public } from '@dec/public.route.decorator';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('student')
 @Controller()
 export class AuthController {
 

@@ -50,6 +50,7 @@ export class AuthService {
 
             const ACCESS_TOKEN = jwtHelper.sign(
                 {
+                    id: user.id,
                     username: user.username,
                     role: user.role
                 },
@@ -60,6 +61,7 @@ export class AuthService {
 
             const REFRESH_TOKEN = jwtHelper.sign(
                 {
+                    id: user.id,
                     username: user.username,
                     role: user.role
                 },
@@ -103,6 +105,7 @@ export class AuthService {
 
             const ACCESS_TOKEN = jwtHelper.sign(
                 {
+                    id: newUser.id,
                     username: newUser.username,
                     role: newUser.role
                 },
@@ -113,6 +116,7 @@ export class AuthService {
 
             const REFRESH_TOKEN = jwtHelper.sign(
                 {
+                    id: newUser.id,
                     username: newUser.username,
                     role: newUser.role
                 },
@@ -163,7 +167,7 @@ export class AuthService {
             }
 
             const ACCESS_TOKEN = jwtHelper.sign(
-                { username: user.username, role: user.role },
+                { id: user.id, username: user.username, role: user.role },
                 { expiresIn: '1d' }
             );
 

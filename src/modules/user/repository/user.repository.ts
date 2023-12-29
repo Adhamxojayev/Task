@@ -3,6 +3,7 @@ import { UserEntity } from '../entities/user.entity';
 import { CustomRepository } from '@dec/typeorm-ex.decorator';
 import { DbExceptions } from '@utils/exceptions/dbException';
 import { SignUpDto } from '../../auth/dto/register.dto';
+import { USER_ROLE } from '@utils/enums';
 
 @CustomRepository(UserEntity)
 export class UserRepository extends Repository<UserEntity> {
@@ -25,15 +26,13 @@ export class UserRepository extends Repository<UserEntity> {
     
     }
 
-    async createUser(dto: SignUpDto): Promise<UserEntity> {
+    async createUser(dto): Promise<UserEntity> {
 
         try {
 
             return await this.create({
                 username: dto.username,
                 password: dto.password,
-                firstname: dto.firstname,
-                lastname: dto.lastname,
                 role: dto.role
             }).save();
         
@@ -50,6 +49,34 @@ export class UserRepository extends Repository<UserEntity> {
         try {
 
             return await this.findOneBy({ id });
+        
+        } catch (err) {
+
+            DbExceptions.handle(err);
+        
+        }
+    
+    }
+
+    async getUserByRole(role: USER_ROLE): Promise<UserEntity[]> {
+
+        try {
+
+            return await this.find({ where: { role: role } } );
+        
+        } catch (err) {
+
+            DbExceptions.handle(err);
+        
+        }
+    
+    }
+
+    async getUserByRoleAndById(id: number, role: USER_ROLE): Promise<UserEntity> {
+
+        try {
+
+            return await this.findOne({ where: { role: role, id: id } } );
         
         } catch (err) {
 

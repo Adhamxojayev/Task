@@ -60,7 +60,8 @@ export class AuthTeacherService {
             }
 
             const ACCESS_TOKEN = jwtHelper.sign(
-                {
+                {   
+                    id: teacher.id,
                     username: teacher.username,
                     role: USER_ROLE.TEACHER
                 },
@@ -71,6 +72,7 @@ export class AuthTeacherService {
 
             const REFRESH_TOKEN = jwtHelper.sign(
                 {
+                    id: teacher.id,
                     username: teacher.username,
                     role: USER_ROLE.TEACHER
                 },
@@ -122,7 +124,7 @@ export class AuthTeacherService {
             }
 
             const ACCESS_TOKEN = jwtHelper.sign(
-                { username: teacher.username, role: USER_ROLE.TEACHER },
+                { id: teacher.id, username: teacher.username, role: USER_ROLE.TEACHER },
                 { expiresIn: '1d' }
             );
 

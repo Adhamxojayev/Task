@@ -36,7 +36,7 @@ export class SeedService {
             const user = new UserEntity();
             user.username = 'director';
             user.role = USER_ROLE.DIRECTOR;
-            user.password = await bcryptHelper.hash(process.env['ADMIN_PASSWORD']);
+            user.password = await bcryptHelper.hash('123456789');
 
             const record = manager.create(UserEntity, user);
             await manager.save(record);
