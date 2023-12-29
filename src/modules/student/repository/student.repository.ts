@@ -127,4 +127,33 @@ export class StudentRepository extends Repository<StudentEntity> {
     
     }
 
+    async getStudentReport( id: number ): Promise<AssessmentEntity[]> {
+
+        try {
+
+            const query = await this.manager.query(`
+                SELECT 
+                    gr.group_name AS "groupName",
+                    u.username AS name,
+                    ob.object_name AS subject,
+                    AVG(asm.grade) AS averageGrade
+                FROM students AS st
+                LEFT JOIN groups AS gr ON gr.id = st."groupId"
+                JOIN users AS u ON u.id = st."userId"
+                LEFT JOIN assessments AS asm ON asm."studentId" = st.id
+                JOIN objects AS ob ON ob.id = asm."objectId"
+                WHERE st."userId" = $1
+                GROUP BY gr.group_name, u.username, ob.object_name, asm.grade
+            `, [id]);
+            
+            return query;
+            
+        } catch (err) {
+
+            DbExceptions.handle(err);
+        
+        }
+    
+    }
+
 }

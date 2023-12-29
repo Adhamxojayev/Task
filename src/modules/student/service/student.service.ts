@@ -37,6 +37,22 @@ export class StudentService {
     
     }
 
+    async findReport(user): Promise<BaseResponse<any[]>> {
+
+        try {
+
+            const data = await this.studentRepository.getStudentReport(user.id);
+        
+            return { status: HttpStatus.OK, data: data, message: 'OK' };
+        
+        } catch (err) {
+
+            ServiceExceptions.handle(err, StudentService.name, 'findAll');
+        
+        }
+    
+    }
+
     async findGrades(user): Promise<BaseResponse<AssessmentEntity[] | any>> {
 
         try {

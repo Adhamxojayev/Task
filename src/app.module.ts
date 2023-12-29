@@ -5,7 +5,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { DataSource } from 'typeorm';
 import { dataSource } from '@utils/dataSource';
 import { configuration } from '@utils/db.config';
-// import { SeedModule } from './seed/seed.module';
+import { SeedModule } from './seed/seed.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { RolesGuard } from './modules/auth/guard/roles.guard';
 import { AuthGuard } from './modules/auth/guard/auth.guard';
@@ -18,7 +18,7 @@ import { TeacherModule } from './modules/teacher/teacher.module';
 @Module({
     imports: [
         TypeOrmModule.forRoot(configuration.getTypeOrmConfig()),
-        // SeedModule,
+        SeedModule,
         AuthModule,
         GroupModule,
         StudentModule,
