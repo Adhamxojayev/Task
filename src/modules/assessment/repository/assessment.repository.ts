@@ -53,20 +53,6 @@ export class AssessmentRepository extends Repository<AssessmentEntity> {
     
     }
 
-    // async updateAssessmentStudent (id: number, dto: UpdateAssessmentDto): Promise<AssessmentEntity> {
-
-    //     try {
-
-    //         const assessment = 1
-            
-    //     } catch (err) {
-
-    //         DbExceptions.handle(err);
-        
-    //     }
-    
-    // }
-
     async deleteAssessment( id: number ): Promise<AssessmentEntity> {
 
         try {
