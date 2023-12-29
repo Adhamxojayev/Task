@@ -40,6 +40,14 @@ export class SeedService {
 
             const record = manager.create(UserEntity, user);
             await manager.save(record);
+
+            const teacher = new UserEntity();
+            user.username = 'teacher';
+            user.role = USER_ROLE.TEACHER;
+            user.password = await bcryptHelper.hash('123456789');
+
+            const data = manager.create(UserEntity, teacher);
+            await manager.save(data);
         
         }
     

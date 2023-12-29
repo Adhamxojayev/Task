@@ -4,10 +4,11 @@ import { AssessmentService } from '../service/assessment.service';
 import { Roles } from '@dec/roles.decorator';
 import { USER_ROLE } from '@utils/enums';
 import { CreateAssessmentDto } from '../dto/create.assessment.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { iReq } from '@utils/interface';
 
 @ApiTags('assessment')
+@ApiBearerAuth()
 @Controller('assessment')
 export class AssessmentController {
 

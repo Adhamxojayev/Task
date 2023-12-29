@@ -4,7 +4,7 @@ import { TeacherService } from '../service/teacher.service';
 import { USER_ROLE } from '@utils/enums';
 import { Roles } from '@dec/roles.decorator';
 import { iReq } from '@utils/interface';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('teacher')
 @Controller('teacher')
@@ -12,6 +12,7 @@ export class TeacherController {
 
     constructor(private readonly teacherService: TeacherService) {}
 
+    @ApiBearerAuth()
     @Roles(USER_ROLE.TEACHER)
     @Get('my/groups')
     async findAll( @Req() req: iReq & { user: any }, @Res() response: Response) {

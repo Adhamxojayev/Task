@@ -7,10 +7,11 @@ import { CreateGroupDto } from '../dto/create.group.dto';
 import { UpdateGroupDto } from '../dto/update.group.dto';
 import { CreateObjectGroupDto } from '../dto/create.object.group.dto';
 import { CreateTeacherGroupDto } from '../dto/create.teacher.group.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { CreateStudentGroupDto } from '../dto/create.student.group.dto';
 
 @ApiTags('group')
+@ApiBearerAuth()
 @Controller('group')
 export class GroupController {
 
