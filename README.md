@@ -63,7 +63,7 @@ getDataSourceConfig(): DataSourceOptions {
 ```bash
 npm run db:seed
 ``` 
-command superAdmin will be created .
+command will be created .
 ```json
 {
     "username": "director",
